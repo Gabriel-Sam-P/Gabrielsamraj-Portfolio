@@ -1,13 +1,13 @@
 import React from 'react';
 import { Grid, Card, CardMedia, CardContent, Typography, Box } from '@mui/material';
 import web from '../Assests/E-Comm.png';
-import task from '../Assests/Task-Manager.png'; // <-- add an image for your task manager project
+import task from '../Assests/Task-Manager.png';
 
 const Projects = () => {
   const data = [
     { 
       title: "E-Commerce App", 
-      desc: "React, Firebase, MUI", 
+      desc:  "React, Firebase Realtime DB, MUI",  
       img: web,
       link: "https://e-cart-by-gabriel.web.app/"
     },
@@ -21,13 +21,13 @@ const Projects = () => {
 
   return (
     <Box id="projects" sx={{ py: 10 }}>
-      <Box className="container" sx={{ textAlign: 'center', mb: 6 }}>
+      <Box sx={{ textAlign: 'center', mb: 6 }}>
         <Typography 
           variant="h4"
           sx={{
             fontWeight: 'bold',
             textAlign: 'center',
-            marginBottom: { xs: '30px', md: '50px' },
+            mb: { xs: 3, md: 5 },
             textTransform: 'uppercase',
             letterSpacing: '2px',
           }}
@@ -36,9 +36,9 @@ const Projects = () => {
         </Typography>
       </Box>
 
-      <Grid container spacing={3} justifyContent="center">
+      <Grid container spacing={4} justifyContent="center">
         {data.map((proj, idx) => (
-          <Grid item key={idx} xs={12} sm={6} md={4} lg={5}>
+          <Grid item key={idx} xs={12} sm={6} md={4} lg={4}>
             <a 
               href={proj.link} 
               target="_blank" 
@@ -47,22 +47,30 @@ const Projects = () => {
             >
               <Card 
                 sx={{ 
-                  height: '100%',
-                  transition: 'transform 0.3s', 
+                  height: 310,              // Fixed height for uniformity
+                  width: 220,               // Fixed width for uniformity
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  mx: 'auto',
+                  transition: 'transform 0.3s',
                   '&:hover': { transform: 'scale(1.05)' }
                 }}
               >
                 <CardMedia
                   component="img"
-                  height="200"
                   image={proj.img}
                   alt={proj.title}
+                  sx={{
+                    height: "200px",           // Fixed image height
+                    objectFit: 'cover',    // Ensures consistent crop/fit
+                  }}
                 />
                 <CardContent>
-                  <Typography variant="h6" component="div" gutterBottom>
+                  <Typography variant="h6" component="div" gutterBottom align="center">
                     {proj.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" align="center">
                     {proj.desc}
                   </Typography>
                 </CardContent>
